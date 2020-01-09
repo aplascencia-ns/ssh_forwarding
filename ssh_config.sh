@@ -78,12 +78,11 @@ for row in $(echo "${bastion}" | jq -r '.[][] | @base64'); do
         echo ${row} | base64 --decode | jq -r ${1}
         }
 
+        # Set variables
         private_ip=$(_jq '.privateIp')
-        # host="${private_ip#.*.*.}"
-        # echo ${private_ip#*.*.*.}
         host=${private_ip#*.*.*.}
         
-
+# Creating config
 cat >> "/tmp/config_${namespace}" <<EOF
 Host server_${public_ip}_${host}
    HostName $private_ip
@@ -112,4 +111,4 @@ cat "/tmp/config_$namespace" >> ${file_config_temp}
 ##########################
 cat ${file_config_temp} > "${file_config_local}" 
 
-code "${file_config_local}" 
+# code "${file_config_local}" 
