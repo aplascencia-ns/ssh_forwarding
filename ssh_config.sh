@@ -70,7 +70,7 @@ for row in $(echo "${bastion}" | jq -r '.[][] | @base64'); do
         
 # Creating Account config
 cat >> ${file_config_account} <<EOF
-Host server_${public_ip}_${host}
+Host ${account_name}_${public_ip}_${host}
    HostName $private_ip
    User ubuntu
    ForwardAgent yes
