@@ -84,3 +84,13 @@ EOF
 done # end for ${bastion}
 
 # cat ${file_config_account}
+
+
+########################################
+
+
+
+
+
+
+
